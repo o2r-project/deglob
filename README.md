@@ -57,14 +57,16 @@ To define patterns in package.json add somthing like this:
 ```
 If you do not fancy the `config` key, provide a different one using the `configKey` option.
 
+To DISABLE `deglob`s automatic search for the closest package.json in parent directories, set the option parameter `opts.findRoot = false`.
 
 ## Options
 Option         | Default       | Description
 -------------- | --------      | -------
-useGitIgnore   | true          | Turn on/off allowing ignore patterns via `.gitignore`
-usePackageJson | true          | Turn on/off allowing ignore patterns via `package.json` config.
-configKey      | 'config'      | This is the parent key in `package.json` to look for the `ignore` attribute.
+useGitIgnore   | true          | Turn on/off allowing ignore patterns via `.gitignore`.
+usePackageJson | true          | Turn on/off allowing ignore patterns via `package.json` config
+configKey      | 'config'      | This is the parent key in `package.json` to look for the `ignore` attribute
 gitIgnoreFile  | '.gitignore'  | Name of the `.gitignore` file look for (probably best to leave it default)
+findRoot       | true          | Search for the closest `package.json` file in parent directories
 ignore         | []            | List of additional ignore patterns to use
 cwd            | process.cwd() | This is the working directory to start the deglobbing
 

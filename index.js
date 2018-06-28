@@ -58,7 +58,8 @@ function parseOpts (opts) {
     useGitIgnore: true,
     usePackageJson: true,
     configKey: 'config',
-    gitIgnoreFile: ['.gitignore', '.git/info/exclude']
+    gitIgnoreFile: ['.gitignore', '.git/info/exclude'],
+    findRoot: true
   }, opts)
 
   if (!opts.cwd) opts.cwd = process.cwd()
@@ -79,12 +80,16 @@ function parseOpts (opts) {
     return opts
   }
 
-  // Find package.json in the project root
+  // Find package.json in the project root, if requested via findRoot parameter
   var root
-  try {
-    root = findRoot(opts.cwd)
-  } catch (e) {}
-
+  if (opts.findRoot) {
+    try {
+      root = findRoot(opts.cwd)
+    } catch (e) {}
+  } else {
+    root = opts.cwd;
+  }
+  
   if (root) {
     if (opts.usePackageJson) {
       var packageOpts = pkgConfig(opts.configKey, { root: false, cwd: opts.cwd })
