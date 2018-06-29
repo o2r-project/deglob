@@ -57,7 +57,7 @@ To define patterns in package.json add somthing like this:
 ```
 If you do not fancy the `config` key, provide a different one using the `configKey` option.
 
-To DISABLE `deglob`s automatic search for the closest package.json in parent directories, set the option parameter `opts.findRoot = false`.
+To DISABLE `deglob`s automatic search for the closest package.json in parent directories, set the option parameter `opts.findRoot = false`, in which case the `cwd` path is used.
 
 ## Options
 Option         | Default       | Description
